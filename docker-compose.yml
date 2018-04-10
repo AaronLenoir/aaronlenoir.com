@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  ghost:
+    image: ghost:1-alpine
+    restart: always
+    ports:
+      - 8080:2368
+    volumes:
+      - ./blog/data/ghost:/var/lib/ghost/content
