@@ -27,7 +27,7 @@ services:
     volumes:
       - ./blog/data/ghost:/var/lib/ghost/content
     environment:
-      - VIRTUAL_HOST=blog.aaronlenoir.local
-      - LETSENCRYPT_HOST=blog.aaronlenoir.local
+      - VIRTUAL_HOST=test-blog.aaronlenoir.com
+      - LETSENCRYPT_HOST=test-blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.local
       - LETSENCRYPT_TEST=true
