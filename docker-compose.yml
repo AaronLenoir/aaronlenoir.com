@@ -1,9 +1,33 @@
 version: '3.1'
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/etc/nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/usr/share/nginx/html:/usr/share/nginx/html
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+  nginx-proxy-companon:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx/certs:/etc/nginx/certs:rw
+      - ./nginx/etc/nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/usr/share/nginx/html:/usr/share/nginx/html
   ghost:
     image: ghost:1-alpine
     restart: always
     ports:
-      - 8080:2368
+      - 127.0.0.1:8080:2368
     volumes:
       - ./blog/data/ghost:/var/lib/ghost/content
+    environment:
+      - VIRTUAL_HOST=blog.aaronlenoir.local
+      - LETSENCRYPT_HOST=blog.aaronlenoir.local
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.local
+      - LETSENCRYPT_TEST=true
