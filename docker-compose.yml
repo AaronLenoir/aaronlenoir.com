@@ -29,10 +29,13 @@ services:
     volumes:
       - ./blog/data/ghost:/var/lib/ghost/content
     environment:
+      - url=https://test-blog.aaronlenoir.com
       - VIRTUAL_HOST=test-blog.aaronlenoir.com
       - LETSENCRYPT_HOST=test-blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
       - LETSENCRYPT_TEST=true
+    stdin_open: true
+    tty: true
 volumes:
   vhost.d:
   nginx.html:
