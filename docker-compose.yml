@@ -31,7 +31,7 @@ services:
     environment:
       - VIRTUAL_HOST=test-blog.aaronlenoir.com
       - LETSENCRYPT_HOST=test-blog.aaronlenoir.com
-      - LETSENCRYPT_EMAIL=info@aaronlenoir.local
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.com
       - LETSENCRYPT_TEST=true
 volumes:
   vhost.d:
