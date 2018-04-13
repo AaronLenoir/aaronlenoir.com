@@ -34,8 +34,6 @@ services:
       - LETSENCRYPT_HOST=test-blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
       - LETSENCRYPT_TEST=true
-    stdin_open: true
-    tty: true
 volumes:
   vhost.d:
   nginx.html:
