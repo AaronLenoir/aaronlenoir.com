@@ -14,6 +14,8 @@ services:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
   nginx-proxy-companon:
     image: jrcs/letsencrypt-nginx-proxy-companion
+    depends_on:
+      - "nginx-proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./nginx/certs:/etc/nginx/certs:rw
@@ -24,16 +26,17 @@ services:
   ghost:
     image: ghost:1-alpine
     restart: always
+    depends_on:
+      - "nginx-proxy"
     ports:
       - 127.0.0.1:8080:2368
     volumes:
       - ./blog/data/ghost:/var/lib/ghost/content
     environment:
-      - url=https://test-blog.aaronlenoir.com
-      - VIRTUAL_HOST=test-blog.aaronlenoir.com
-      - LETSENCRYPT_HOST=test-blog.aaronlenoir.com
+      - url=https://blog.aaronlenoir.com
+      - VIRTUAL_HOST=blog.aaronlenoir.com
+      - LETSENCRYPT_HOST=blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
-      - LETSENCRYPT_TEST=true
 volumes:
   vhost.d:
   nginx.html:
