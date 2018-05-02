@@ -8,7 +8,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/certs:/etc/nginx/certs:ro
-      - vhost.d:/etc/nginx/vhost.d
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
       - nginx.html:/usr/share/nginx/html
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
@@ -19,7 +19,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./nginx/certs:/etc/nginx/certs:rw
-      - vhost.d:/etc/nginx/vhost.d
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
       - nginx.html:/usr/share/nginx/html
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
@@ -38,5 +38,4 @@ services:
       - LETSENCRYPT_HOST=blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
-  vhost.d:
   nginx.html:
