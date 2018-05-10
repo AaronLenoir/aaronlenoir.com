@@ -3,3 +3,4 @@ add_header Content-Security-Policy "script-src 'self' 'unsafe-inline' https://co
 add_header X-XSS-Protection "1; mode=block";
 add_header X-Content-Type-Options "nosniff";
 add_header Referrer-Policy "no-referrer-when-downgrade";
+server_tokens off;
