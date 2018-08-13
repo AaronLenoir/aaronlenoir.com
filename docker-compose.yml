@@ -44,7 +44,7 @@ services:
     ports:
       - 127.0.0.1:8081:80
     volumes:
-      - ./score:/usr/share/nginx/html:ro
+      - ./score/tablechamp-app:/usr/share/nginx/html:ro
     environment:
       - url=https://score.aaronlenoir.com
       - VIRTUAL_HOST=score.aaronlenoir.com
