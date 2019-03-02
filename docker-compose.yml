@@ -59,6 +59,8 @@ services:
       - "nginx-proxy"
     ports:
       - 127.0.0.1:8100:80
+    volumes:
+      - ./kicker/Configuration:/app/Configuration
     environment:
       - url=https://kicker.aaronlenoir.com
       - VIRTUAL_HOST=kicker.aaronlenoir.com
