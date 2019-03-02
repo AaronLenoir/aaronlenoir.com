@@ -3,10 +3,11 @@ services:
   nginx-proxy:
     image: jwilder/nginx-proxy
     ports:
-      - "80:80"
-      - "443:443"
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/dhparam:/etc/nginx/dhparam:rw
       - ./nginx/certs:/etc/nginx/certs:ro
       - ./nginx/vhost.d:/etc/nginx/vhost.d
       - nginx.html:/usr/share/nginx/html
@@ -50,6 +51,18 @@ services:
       - url=https://flightschool.aaronlenoir.com
       - VIRTUAL_HOST=flightschool.aaronlenoir.com
       - LETSENCRYPT_HOST=flightschool.aaronlenoir.com
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.com
+  kicker:
+    image: kicker
+    restart: always
+    depends_on:
+      - "nginx-proxy"
+    ports:
+      - 127.0.0.1:8100:80
+    environment:
+      - url=https://kicker.aaronlenoir.com
+      - VIRTUAL_HOST=kicker.aaronlenoir.com
+      - LETSENCRYPT_HOST=kicker.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
   nginx.html:
