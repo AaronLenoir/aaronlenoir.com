@@ -66,5 +66,17 @@ services:
       - VIRTUAL_HOST=kicker.aaronlenoir.com
       - LETSENCRYPT_HOST=kicker.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
+  tracks:
+    image: tracks
+    restart: always
+    depends_on:
+      - "nginx-proxy"
+    ports:
+      - 127.0.0.1:8110:80
+    environment:
+      - url=https://tracks.aaronlenoir.com
+      - VIRTUAL_HOST=tracks.aaronlenoir.com
+      - LETSENCRYPT_HOST=tracks.aaronlenoir.com
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
   nginx.html:

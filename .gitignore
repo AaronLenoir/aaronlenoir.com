@@ -4,3 +4,5 @@ nginx/
 score/tablechamp-app/
 kicker/app
 kicker/Configuration
+kicker/.Dockerfile.swp
+tracks/
