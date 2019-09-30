@@ -48,9 +48,9 @@ services:
     volumes:
       - ./flightschool/data/ghost:/var/lib/ghost/content
     environment:
-      - url=https://flightschool.aaronlenoir.com
-      - VIRTUAL_HOST=flightschool.aaronlenoir.com
-      - LETSENCRYPT_HOST=flightschool.aaronlenoir.com
+      - url=https://test-flightschool.aaronlenoir.com
+      - VIRTUAL_HOST=test-flightschool.aaronlenoir.com
+      - LETSENCRYPT_HOST=test-flightschool.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
   kicker:
     image: kicker
@@ -91,6 +91,20 @@ services:
       - url=https://blog.aaronlenoir.com
       - VIRTUAL_HOST=blog.aaronlenoir.com
       - LETSENCRYPT_HOST=blog.aaronlenoir.com
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.com
+  flightschool2:
+    image: ghost:2-alpine
+    restart: always
+    depends_on:
+      - "nginx-proxy"
+    ports:
+      - 127.0.0.1:8130:2368
+    volumes:
+      - ./flightschool2/data/ghost:/var/lib/ghost/content
+    environment:
+      - url=https://flightschool.aaronlenoir.com
+      - VIRTUAL_HOST=flightschool.aaronlenoir.com
+      - LETSENCRYPT_HOST=flightschool.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
   nginx.html:
