@@ -34,9 +34,9 @@ services:
     volumes:
       - ./blog/data/ghost:/var/lib/ghost/content
     environment:
-      - url=https://blog.aaronlenoir.com
-      - VIRTUAL_HOST=blog.aaronlenoir.com
-      - LETSENCRYPT_HOST=blog.aaronlenoir.com
+      - url=https://blog-test.aaronlenoir.com
+      - VIRTUAL_HOST=blog-test.aaronlenoir.com
+      - LETSENCRYPT_HOST=blog-test.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
   flightschool:
     image: ghost:1-alpine
@@ -88,9 +88,9 @@ services:
     volumes:
       - ./blog2/data/ghost:/var/lib/ghost/content
     environment:
-      - url=https://blog-test.aaronlenoir.com
-      - VIRTUAL_HOST=blog-test.aaronlenoir.com
-      - LETSENCRYPT_HOST=blog-test.aaronlenoir.com
+      - url=https://blog.aaronlenoir.com
+      - VIRTUAL_HOST=blog.aaronlenoir.com
+      - LETSENCRYPT_HOST=blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
   nginx.html:
