@@ -50,7 +50,7 @@ services:
       - VIRTUAL_HOST=tracks.aaronlenoir.com
       - LETSENCRYPT_HOST=tracks.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
-  ghost2:
+  ghost:
     image: ghost:2-alpine
     restart: always
     depends_on:
@@ -58,13 +58,13 @@ services:
     ports:
       - 127.0.0.1:8120:2368
     volumes:
-      - ./blog2/data/ghost:/var/lib/ghost/content
+      - ./blog/data/ghost:/var/lib/ghost/content
     environment:
       - url=https://blog.aaronlenoir.com
       - VIRTUAL_HOST=blog.aaronlenoir.com
       - LETSENCRYPT_HOST=blog.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
-  flightschool2:
+  flightschool:
     image: ghost:2-alpine
     restart: always
     depends_on:
@@ -72,7 +72,7 @@ services:
     ports:
       - 127.0.0.1:8130:2368
     volumes:
-      - ./flightschool2/data/ghost:/var/lib/ghost/content
+      - ./flightschool/data/ghost:/var/lib/ghost/content
     environment:
       - url=https://flightschool.aaronlenoir.com
       - VIRTUAL_HOST=flightschool.aaronlenoir.com
