@@ -3,6 +3,7 @@ blog2/data
 flightschool/data
 flightschool2/data
 nginx/
+!nginx/vhost.d/
 score/tablechamp-app/
 kicker/app
 kicker/Configuration
