@@ -78,5 +78,19 @@ services:
       - VIRTUAL_HOST=flightschool.aaronlenoir.com
       - LETSENCRYPT_HOST=flightschool.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
+  edrive:
+    image: nginx:alpine
+    restart: always
+    depends_on:
+      - "nginx-proxy"
+    ports:
+      - 127.0.0.1:8140:80
+    volumes:
+      - ./edrive/html:/usr/share/nginx/html:ro
+    environment:
+      - url=https://edrive.aaronlenoir.com
+      - VIRTUAL_HOST=edrive.aaronlenoir.com
+      - LETSENCRYPT_HOST=edrive.aaronlenoir.com
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
   nginx.html:
