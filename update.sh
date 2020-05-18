@@ -1,4 +1,4 @@
-sudo docker-compose pull
+sudo docker-compose pull --ignore-pull-failures
 cd kicker/app
 git pull
 cd ..
