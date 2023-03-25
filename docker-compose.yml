@@ -92,5 +92,17 @@ services:
       - VIRTUAL_HOST=edrive.aaronlenoir.com
       - LETSENCRYPT_HOST=edrive.aaronlenoir.com
       - LETSENCRYPT_EMAIL=info@aaronlenoir.com
+  kicker-stats:
+    image: kicker-stats
+    restart: always
+    depends_on:
+      - "nginx-proxy"
+    ports:
+      - 127.0.0.1:8150:4000
+    environment:
+      - url=https://kicker-stats.aaronlenoir.com
+      - VIRTUAL_HOST=kicker-stats.aaronlenoir.com
+      - LETSENCRYPT_HOST=kicker-stats.aaronlenoir.com
+      - LETSENCRYPT_EMAIL=info@aaronlenoir.com
 volumes:
   nginx.html:
